@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<link rel='stylesheet' href='default.css'>
+</head>
+<body>
+	<div>
+		<input id='fileInput'  type='file'/>
+	</div>
+</body>
+<script type="text/javascript">
+	fileInput.addEventListener('change',function(err,data){
+		console.log(this.files)
+	})
+</script>
+</html>
