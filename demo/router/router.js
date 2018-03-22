@@ -24,14 +24,16 @@ module.exports=(router)=>{
 		ctx.res.setHeader('Set-Cookie','age=11')
 		ctx.body='path4Content'
 	});
-	router.get('path5',async(ctx)=>{
+	router.get('storeCode',async(ctx)=>{
 
-		ctx.body={a:1,b:3};
+		ctx.body=['sikeda','dazhong'];
 	})
-	router.post('path5',async(ctx)=>{
+	router.get('login',async(ctx)=>{
 
 		ctx.body=await new Promise(resolve=>{
-			setTimeout(()=>resolve({a:1,b:4}),2000)
+			setTimeout(()=>resolve({
+				username:'zzzz'
+			}),200)
 		}) 
 	})
 	return router;
