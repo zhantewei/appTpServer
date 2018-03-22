@@ -5,7 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "https-pem": "^2.0.0",
-    "ztwserver-switchheader": "file:ztwserver-switchheader"
+    "ztwserver-switchheader": "^1.0.4"
   },
   "devDependencies": {},
   "scripts": {

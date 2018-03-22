@@ -12,6 +12,6 @@
     "ztwserver": "^1.0.2",
     "ztwserver-router": "^1.0.0",
     "ztwserver-static": "^1.0.1",
-    "ztwserver-switchheader": "^1.0.3"
+    "ztwserver-switchheader": "^1.0.4"
   }
 }

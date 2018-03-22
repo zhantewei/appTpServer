@@ -7,14 +7,26 @@ module.exports=(urlPath,nativePath,opts={},disSize=100)=>{
 	const runOpts=staticOpts(opts);
 
 	return async(ctx,next)=>{
+
 		if(ctx.req.url.indexOf(urlPath)==0){
 
 			const pathName=ctx.req.url.slice(urlPath.length);
-
+				
 			if(pathName){
 				const result=await new Promise((resolve,reject)=>{
-					fs.open(nativePath+pathName,'r+',(err,fd)=>{
-						if(err)return resolve(false);
+
+					const view=(readPath,skip)=>{
+						fs.open(readPath,'r+',(err,fd)=>{
+						if(err&&!skip){
+								if(opts.index){
+									//send main index:
+									//ctx.sendFile(nativePath+'/'+opts.index)
+									return view(nativePath+'/'+opts.index,true);
+									
+								}else{
+									return resolve(false);
+								}
+							};
 						switchHeader(pathName,ctx.res);
 
 						fs.fstat(fd,(err,data)=>{
@@ -57,8 +69,9 @@ module.exports=(urlPath,nativePath,opts={},disSize=100)=>{
 							}
 							read();
 						})
-					})
-
+						})
+					}
+					view(nativePath+pathName)
 
 					/*
 					const rs=fs.createReadStream(nativePath+pathName);
